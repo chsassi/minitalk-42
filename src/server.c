@@ -11,3 +11,11 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int	main(void)
+{
+	ft_printf("PID: %d", getpid());
+	// signal(SIGUSR1, );
+	// signal(SIGUSR2, );
+	pause();
+}

@@ -1,4 +1,6 @@
 NAME = minitalk
+NAME_SERVER = server
+NAME_CLIENT = client
 
 CC = cc
 HEADER = ./libft.plus/headers
@@ -14,29 +16,28 @@ BLUE=\033[0;34m
 YELLOW=\033[0;33m
 RESET=\033[0m
 
-SRC =   ./src/main.c \
-		./src/client.c \
-		./src/server.c \
+SRC_CLIENT =	./src/client.c
+SRC_SERVER =	./src/server.c
 
-OBJ = $(SRC:.c=.o)
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
 
 all: $(NAME)
 
-libft:
+$(NAME): $(OBJ_SERVER) $(OBJ_CLIENT)
 	make all -C $(LIBFT_DIR)
-
-$(NAME): libft $(OBJ)
-	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME_SERVER)
+	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ_CLIENT) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT)
 	@echo "$(YELLOW)	MINITALK COMPILED! 📲✅$(RESET)"
 
 RM = rm -f
 
 clean:
-	$(RM) $(OBJ)
 	make clean -C $(LIBFT_DIR)
+	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME)
+	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
 
 re: fclean all
