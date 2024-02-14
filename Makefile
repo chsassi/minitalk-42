@@ -29,15 +29,18 @@ $(NAME): $(OBJ_SERVER) $(OBJ_CLIENT)
 	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME_SERVER)
 	$(CC) $(CFLAGS) -I. -I$(HEADER) $(OBJ_CLIENT) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT)
 	@echo "$(YELLOW)	MINITALK COMPILED! 📲✅$(RESET)"
+	@echo "$(YELLOW)	Run ./client or ./server$(RESET)"
 
 RM = rm -f
 
 clean:
 	make clean -C $(LIBFT_DIR)
 	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
+	@echo "$(RED)	OBJS REMOVED $(RESET)"
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME_CLIENT) $(NAME_SERVER)
+	@echo "$(RED)	MINITALK DESTROYED 📵 $(RESET)"
 
 re: fclean all

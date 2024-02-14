@@ -12,6 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include "ft_printf.h"
 # include "gnl.h"
 # include <stdio.h>
@@ -34,6 +35,13 @@ typedef struct s_list
  * @return the converted integer value.
  */
 int		ft_atoi(const char *str);
+
+/**
+ * @brief Converts a string to a long integer.
+ * @param str a pointer to the string to be converted.
+ * @return the converted long integer value.
+ */
+long ft_atol(const char *str);
 
 /**
  * @brief Fills the memory with zero bytes.
