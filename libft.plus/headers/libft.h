@@ -409,6 +409,8 @@ int		ft_tolower(int c);
  */
 char	**mtx_alloc(int rows, int cols);
 
+int	*put_binary(int nbr);
+
 /**
  * @brief Populates an entire matrix with 'X' - useful for floodfill.
  * @param mtx matrix.
