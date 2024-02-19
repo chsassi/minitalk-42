@@ -12,12 +12,12 @@
 
 #include "minitalk.h"
 
-void	handle_signal(pid_t server_pid, int *array)
+void	handle_signal(pid_t server_pid, char *array)
 {
 	int	i;
 
 	i = 0;
-	while (i < 8)
+	while (array && i < 8)
 	{
 		if (array[i] == 0)
 			kill(SIGUSR1, server_pid);
@@ -29,8 +29,8 @@ void	handle_signal(pid_t server_pid, int *array)
 
 void	handle_client(pid_t server_pid, char *s)
 {
-	int	i;
-	int *array;
+	int		i;
+	char	*array;
 
 	i = 0;
 	while (s && s[i])
@@ -46,5 +46,8 @@ int	main(int ac, char **av)
 	pid_t	server_pid;
 
 	server_pid = ft_atoi(av[1]);
-	handle_client(server_pid, av[2]);
+	if (ac != 3 || )
+		write(1, "", );
+	else
+		handle_client(server_pid, av[2]);
 }
