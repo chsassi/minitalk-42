@@ -16,8 +16,11 @@ BLUE=\033[0;34m
 YELLOW=\033[0;33m
 RESET=\033[0m
 
-SRC_CLIENT =	./src/client.c
-SRC_SERVER =	./src/server.c
+SRC_CLIENT =	./src/client.c \
+				./src/client_utils.c
+
+SRC_SERVER =	./src/server.c \
+				./src/server_utils.c
 
 OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 OBJ_SERVER = $(SRC_SERVER:.c=.o)

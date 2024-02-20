@@ -32,7 +32,7 @@ SRC = ./char.handling/ft_isalnum.c \
 	./conversions/ft_atoi.c \
 	./conversions/ft_itoa.c \
 	./conversions/ft_putnbr_fd.c \
-	./conversions/put_binary.c \
+	./conversions/binary.c \
 	./ft_printf/ft_printf.c \
 	./ft_printf/ft_putaddr.c \
 	./ft_printf/ft_putchar.c \
