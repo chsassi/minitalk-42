@@ -29,6 +29,11 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+/**
+ * @brief Converts an integer to binary and puts every bit in a string.
+ * @param nbr the integer that needs to be converted in binary.
+ * @return the octet.
+ */
 char		*binary_to_octet(int nb);
 
 /**

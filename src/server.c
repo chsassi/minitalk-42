@@ -12,6 +12,8 @@
 
 #include "minitalk.h"
 
+
+
 int	main(void)
 {
 	// char	*res;

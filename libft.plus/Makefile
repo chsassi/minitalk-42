@@ -86,12 +86,13 @@ OBJ = ${SRC:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(BLUE)	LIBFT COMPILED! 📖✅$(RESET)"
+	@echo "$(BLUE)	LIBFT COMPILED! 📖✅ $(RESET)"
 	@$(ARCHIVE) $(OBJ)
 RM = rm -f
 
 clean:
 	@$(RM) $(OBJ)
+	@echo "$(RED)	OBJS REMOVED $(RESET)"
 
 fclean: clean
 	@$(RM) */**/*.o
