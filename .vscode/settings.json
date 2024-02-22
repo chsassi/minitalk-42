@@ -1,9 +1,5 @@
 {
     "files.associations": {
-        "signal.h": "c",
-        "sigset_t.h": "c",
-        "unistd.h": "c",
-        "minitalk.h": "c",
-        "libft.h": "c"
+        "minitalk.h": "c"
     }
 }

@@ -12,12 +12,3 @@
 
 #include "minitalk.h"
 
-char	*g_array = NULL;
-
-void	handle_server(int signbr)
-{
-	if (signbr == SIGUSR1)
-		(*g_array++) = 0;
-	else if (signbr == SIGUSR2)
-		(*g_array++) = 1;
-}

@@ -43,6 +43,8 @@ char		*binary_to_octet(int nb);
  */
 int		ft_atoi(const char *str);
 
+int		ft_atoi_base(char *str, char *base);
+
 /**
  * @brief Converts a string to a long integer.
  * @param str a pointer to the string to be converted.

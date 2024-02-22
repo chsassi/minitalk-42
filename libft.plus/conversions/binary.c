@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
+#include "libft.h"
 
 char	*binary_to_octet(int nb)
 {
@@ -25,6 +23,7 @@ char	*binary_to_octet(int nb)
 	res = (char *)calloc(8, sizeof(char));
 	if (!res)
 		return (NULL);
+	res[8] = '\0';
 	while (j < 8)
 	{
 		if (nb == 1)

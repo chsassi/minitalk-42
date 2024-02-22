@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 		write(1, "Insert a valid PID and the string to send.", 42);
-	else
+	if (ac == 3)
 	{
 		server_pid = ft_atoi(av[1]);
 		handle_client(server_pid, av[2]);

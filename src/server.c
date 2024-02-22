@@ -9,37 +9,43 @@
 /*   Updated: 2024/02/20 14:38:22 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <signal.h>
 #include "minitalk.h"
 
+t_octet ptr = (t_octet){0};
 
+void	handle_server(int signbr)
+{
+	if (signbr == SIGUSR1)
+		ptr.octet[ptr.index] = '0';
+	else if (signbr == SIGUSR2)
+		ptr.octet[ptr.index] = '1';
+	ptr.index--;
+}
 
 int	main(void)
 {
-	// char	*res;
-	// char	c;
-	// int		i;
+	char	c;
 
-	// i = 0;
-	// res = NULL;
-	ft_printf("PID: %d", getpid());
-	// while (1)
-	// {
-	pause();
+	ptr.index = 7;
+	ptr.octet = (char *)ft_calloc(9, sizeof(char));
+	if (!ptr.octet)
+		return (1);
+	ft_printf("PID: %d\n", getpid());
 	signal(SIGUSR1, handle_server);
 	signal(SIGUSR2, handle_server);
-	// 	if (*g_array == '\0')
-	// 	{
-	// 		c = btoc(&g_array[0]);
-	// 		if (res && c == '\0')
-	// 		{
-	// 			ft_printf("%s", res);
-	// 			free(res);
-	// 			continue ;
-	// 		}
-	// 		res = ft_strjoin(c, res);
-	// 		ft_bzero(&g_array[0], 8);
-	// 		g_array = &g_array[0];
-	// 	}
-	// }
+	while (1)
+	{
+		pause();
+		if (ptr.index == -1)
+		{
+			c = ft_atoi_base(ptr.octet, "01");
+			write(1, &c, 1);
+			if (c == 0)
+				write (1, "\n", 1);
+			ptr.index = 7;
+			ft_bzero(ptr.octet, 8);
+		}
+	}
 }
+

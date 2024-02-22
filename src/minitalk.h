@@ -15,10 +15,22 @@
 
 # include "libft.h"
 # include <signal.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <fcntl.h>
+# include <strings.h>
 
-extern char array[8];
+typedef struct s_octet
+{
+	char	*octet;
+	int		index;
+}	t_octet;
 
-void	handle_signal(pid_t server_pid, char *array);
+char	btoc(char *array);
+void	handle_signal(pid_t server_pid, char letter);
 void	handle_client(pid_t server_pid, char *s);
 void	handle_server(int signbr);
 

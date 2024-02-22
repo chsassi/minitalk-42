@@ -1,10 +1,22 @@
 {
     "configurations": [
+        {
+            "name": "(gdb) Launch client",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/client",
+            "args": ["1206650", "ciao"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+        },
     {
-        "name": "(gdb) Launch",
+        "name": "(gdb) Launch server",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/a.out",
+        "program": "${workspaceFolder}/server",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${fileDirname}",
