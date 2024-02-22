@@ -21,10 +21,10 @@ void	handle_signal(pid_t server_pid, char letter)
 	{
 		if (!((letter >> i) & 1))
 			kill(server_pid, SIGUSR1);
-		else 
+		else
 			kill(server_pid, SIGUSR2);
-		i++;
 		usleep(500);
+		i++;
 	}
 }
 

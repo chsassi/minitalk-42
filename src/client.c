@@ -12,15 +12,35 @@
 
 #include "minitalk.h"
 
+void	handle_signal2(int signbr)
+{
+	if (signbr == SIGUSR2)
+		write(1, "Messaggio ricevuto.", 19);
+}
+
 int	main(int ac, char **av)
 {
 	pid_t	server_pid;
+	char	*client_pid;
 
-	if (ac != 3)
+	signal(SIGUSR1, handle_signal2);
+	signal(SIGUSR2, handle_signal2);
+
+	if (ac != 3 || !(ft_strncmp(av[1], "-1", 2)))
+	{
 		write(1, "Insert a valid PID and the string to send.", 42);
+		return (0);
+	}
 	if (ac == 3)
 	{
 		server_pid = ft_atoi(av[1]);
+		client_pid = ft_itoa(getpid());
+		if (!client_pid)
+			return (0);
+		handle_client(server_pid, client_pid);
+		usleep(250);
 		handle_client(server_pid, av[2]);
+		usleep(100);
+		free(client_pid);
 	}
 }

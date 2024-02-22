@@ -25,11 +25,12 @@
 
 typedef struct s_octet
 {
-	char	*octet;
+	char	octet[8];
+	char	*client_pid;
 	int		index;
+	int		flag;
 }	t_octet;
 
-char	btoc(char *array);
 void	handle_signal(pid_t server_pid, char letter);
 void	handle_client(pid_t server_pid, char *s);
 void	handle_server(int signbr);

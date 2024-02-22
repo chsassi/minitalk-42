@@ -12,3 +12,7 @@
 
 #include "minitalk.h"
 
+char	*strjoin_mntlk(char *str, char c)
+{
+	
+}
