@@ -26,16 +26,9 @@ int	main(void)
 {
 	char	c;
 	int		j;
-	char	*res;
 
 	j = 0;
 	g_ptr.index = 7;
-/* 	g_ptr.octet = (char *)ft_calloc(9, sizeof(char));
-	if (!g_ptr.octet)
-		return (1);
-	g_ptr.client_pid = (char *)ft_calloc(6, sizeof(char));
-	if (!g_ptr.client_pid)
-		return (1); */
 	ft_printf("PID: %d\n", getpid());
 	signal(SIGUSR1, handle_server);
 	signal(SIGUSR2, handle_server);
@@ -46,15 +39,19 @@ int	main(void)
 		if (g_ptr.index == -1)
 		{
 			c = ft_atoi_base(g_ptr.octet, "01");
+			ft_printf("%c\n", c);
 			if (g_ptr.flag == 0)
 			{
 				if (c == 0)
 				{
-					g_ptr.client_pid[j] = '\0';
 					g_ptr.flag = 1;
 					continue ;
 				}
-				g_ptr.client_pid = strjoin_gnl(&res, g_ptr.client_pid);
+				g_ptr.client_pid = strjoin_mntlk(g_ptr.client_pid, c);
+				ft_printf("qui\n");
+				ft_printf("%s\n", g_ptr.client_pid);
+				if (!g_ptr.client_pid)
+					return (1);
 				j++;
 			}
 			else if (g_ptr.flag == 1)

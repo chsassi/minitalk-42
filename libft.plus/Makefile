@@ -81,7 +81,8 @@ SRC = ./char.handling/ft_isalnum.c \
 	./string.handling/ft_strnstr.c \
 	./string.handling/ft_strrchr.c \
 	./string.handling/ft_strtrim.c \
-	./string.handling/ft_substr.c
+	./string.handling/ft_substr.c \
+	./string.handling/strjoin_minitalk.c
 
 OBJ = ${SRC:.c=.o}
 

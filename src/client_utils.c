@@ -23,7 +23,7 @@ void	handle_signal(pid_t server_pid, char letter)
 			kill(server_pid, SIGUSR1);
 		else
 			kill(server_pid, SIGUSR2);
-		usleep(500);
+		usleep(2500);
 		i++;
 	}
 }

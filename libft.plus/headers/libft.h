@@ -36,6 +36,9 @@ typedef struct s_list
  */
 char		*binary_to_octet(int nb);
 
+char	*strjoin_mntlk(char *str, int c);
+
+
 /**
  * @brief Converts a string to an integer.
  * @param str a pointer to the string to be converted.
