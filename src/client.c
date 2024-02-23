@@ -14,7 +14,7 @@
 
 void	handle_signal2(int signbr)
 {
-	if (signbr == SIGUSR2)
+	if (signbr == SIGUSR1)
 		write(1, "Messaggio ricevuto.", 19);
 }
 
@@ -38,9 +38,9 @@ int	main(int ac, char **av)
 		if (!client_pid)
 			return (0);
 		handle_client(server_pid, client_pid);
-		usleep(250);
+		usleep(1000);
 		handle_client(server_pid, av[2]);
 		usleep(100);
-		free(client_pid);
+		//free(client_pid);
 	}
 }

@@ -25,7 +25,7 @@
 
 typedef struct s_octet
 {
-	char	octet[8];
+	char	*octet;
 	char	*client_pid;
 	int		index;
 	int		flag;

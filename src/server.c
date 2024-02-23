@@ -25,49 +25,49 @@ void	handle_server(int signbr)
 int	main(void)
 {
 	char	c;
-	int		j;
+	int		i;
 
-	j = 0;
+	i = 0;
 	g_ptr.index = 7;
 	ft_printf("PID: %d\n", getpid());
 	signal(SIGUSR1, handle_server);
 	signal(SIGUSR2, handle_server);
+	g_ptr.client_pid = ft_calloc(8, sizeof(char));
+	if (!g_ptr.client_pid)
+		return (1);
+	g_ptr.octet = ft_calloc(9, sizeof(char));
+	if (!g_ptr.octet)
+		return (1);
 	while (1)
 	{
 		pause();
-		
 		if (g_ptr.index == -1)
 		{
 			c = ft_atoi_base(g_ptr.octet, "01");
-			ft_printf("%c\n", c);
 			if (g_ptr.flag == 0)
 			{
 				if (c == 0)
 				{
 					g_ptr.flag = 1;
+					g_ptr.index = 7;
+					i = 0;
 					continue ;
 				}
-				g_ptr.client_pid = strjoin_mntlk(g_ptr.client_pid, c);
-				ft_printf("qui\n");
-				ft_printf("%s\n", g_ptr.client_pid);
-				if (!g_ptr.client_pid)
-					return (1);
-				j++;
+				g_ptr.client_pid[i] = c;
+				i++;
 			}
 			else if (g_ptr.flag == 1)
 			{
-				write(1, &c, 1);
 				if (c == 0)
 				{
 					write (1, "\n", 1);
-					kill(ft_atoi(g_ptr.client_pid), SIGUSR2);
-					free(g_ptr.client_pid);
+					kill(ft_atoi(g_ptr.client_pid), SIGUSR1);
 					g_ptr.flag = 0;
 				}
+				else
+					write(1, &c, 1);
 			}
 			g_ptr.index = 7;
-/* 			ft_bzero(g_ptr.octet, 8);
- */		}
+		}
 	}
 }
-
