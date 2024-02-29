@@ -12,35 +12,43 @@
 
 #include "minitalk.h"
 
-void	handle_signal2(int signbr)
+t_client	g_ptr = (t_client){0};
+
+void	receive_from_server(int signbr)
 {
 	if (signbr == SIGUSR1)
-		write(1, "Messaggio ricevuto.", 19);
+	{
+	}
+	if (signbr == SIGUSR2)
+	{
+		write(1, "Messaggio ricevuto.\n", 21);
+		exit(0);
+	}
 }
 
 int	main(int ac, char **av)
 {
-	pid_t	server_pid;
-	char	*client_pid;
+	char				*client_pid;
+	struct sigaction	sa;
 
-	signal(SIGUSR1, handle_signal2);
-	signal(SIGUSR2, handle_signal2);
-
-	if (ac != 3 || !(ft_strncmp(av[1], "-1", 2)))
+	sa = (struct sigaction){0};
+	sa.sa_handler = receive_from_server;
+	sigaction(SIGUSR2, &sa, NULL);
+	if (ac != 3)
 	{
 		write(1, "Insert a valid PID and the string to send.", 42);
 		return (0);
 	}
-	if (ac == 3)
-	{
-		server_pid = ft_atoi(av[1]);
-		client_pid = ft_itoa(getpid());
-		if (!client_pid)
-			return (0);
-		handle_client(server_pid, client_pid);
-		usleep(1000);
-		handle_client(server_pid, av[2]);
-		usleep(100);
-		//free(client_pid);
-	}
+	g_ptr.server_pid = ft_atoi(av[1]);
+	if (g_ptr.server_pid <= 0 || kill(g_ptr.server_pid, 0) != 0)
+		return (1);
+	client_pid = ft_itoa(getpid());
+	if (!client_pid)
+		return (free(client_pid), 1);
+	g_ptr.flag = SEND_PID;
+	send_string(g_ptr.server_pid, client_pid);
+	free(client_pid);
+	g_ptr.flag = SEND_MSG;
+	send_string(g_ptr.server_pid, av[2]);
+	pause();
 }

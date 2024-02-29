@@ -12,23 +12,25 @@
 
 #include "minitalk.h"
 
-void	handle_signal(pid_t server_pid, char letter)
+static void	send_char(pid_t server_pid, char letter)
 {
+	int	bit;
 	int	i;
 
 	i = 0;
 	while (i < 8)
 	{
-		if (!((letter >> i) & 1))
+		bit = (letter >> i) & 1;
+		if (!bit)
 			kill(server_pid, SIGUSR1);
 		else
 			kill(server_pid, SIGUSR2);
-		usleep(500);
+		usleep(100);
 		i++;
 	}
 }
 
-void	handle_client(pid_t server_pid, char *s)
+void	send_string(pid_t server_pid, char *s)
 {
 	int		i;
 	int		len;
@@ -36,5 +38,5 @@ void	handle_client(pid_t server_pid, char *s)
 	len = xstrlen(s);
 	i = 0;
 	while (s && i <= len)
-		handle_signal(server_pid, s[i++]);
+		send_char(server_pid, s[i++]);
 }

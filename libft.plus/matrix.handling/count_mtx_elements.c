@@ -6,7 +6,7 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:04:33 by chsassi           #+#    #+#             */
-/*   Updated: 2024/02/01 20:04:34 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/02/28 17:37:20 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	count_cols(char **mtx)
 	int	cols;
 
 	cols = 0;
-	while (mtx[0][cols])
+	while (mtx && mtx[0][cols])
 		cols++;
 	return (cols);
 }
@@ -27,7 +27,7 @@ int	count_rows(char **mtx)
 	int	rows;
 
 	rows = 0;
-	while (mtx[rows] != NULL)
+	while (mtx && mtx[rows] != NULL)
 		rows++;
 	return (rows);
 }

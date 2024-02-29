@@ -15,24 +15,34 @@
 
 # include "libft.h"
 # include <signal.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <fcntl.h>
-# include <strings.h>
+# include <bits/sigaction.h>
 
-typedef struct s_octet
+typedef enum s_action
 {
-	char	*octet;
-	char	*client_pid;
+	SEND_PID,
+	SEND_MSG
+}	t_action;
+
+typedef struct s_server
+{
+	char	c;
+	int		octet[8];
 	int		index;
+	int		client_pid;
 	int		flag;
-}	t_octet;
+}	t_server;
 
-void	handle_signal(pid_t server_pid, char letter);
-void	handle_client(pid_t server_pid, char *s);
-void	handle_server(int signbr);
+typedef struct s_client
+{
+	int		server_pid;
+	int		flag;
+}	t_client;
 
-# endif
+/* Server */
+void	fill_octet(int signbr);
+
+/* Client */
+void	send_string(pid_t server_pid, char *s);
+void	receive_from_server(int signbr);
+
+#endif
