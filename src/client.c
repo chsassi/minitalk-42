@@ -21,7 +21,7 @@ void	receive_from_server(int signbr)
 	}
 	if (signbr == SIGUSR2)
 	{
-		write(1, "Messaggio ricevuto.\n", 21);
+		write(1, "Message Received.\n", 19);
 		exit(0);
 	}
 }

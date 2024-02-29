@@ -39,10 +39,37 @@ typedef struct s_client
 }	t_client;
 
 /* Server */
+
+/**
+ * @brief Generates a unique process ID for the client.
+ */
+void	generate_client_pid(void);
+
+/**
+ * @brief Generates a ACK message to be sent to the client.
+ * @return 0 with success.
+ */
+int		generate_message(void);
+
+/**
+ * @brief Fills an octet with the provided signal number.
+ * @param signbr The signal number to fill the octet with.
+ */
 void	fill_octet(int signbr);
 
 /* Client */
-void	send_string(pid_t server_pid, char *s);
-void	receive_from_server(int signbr);
+
+/**
+ * @brief Sends a string to the server using kill().
+ * @param server_pid The process ID of the server.
+ * @param s The string to be sent, char by char, to fill the octet.
+ */
+void send_string(pid_t server_pid, char *s);
+
+/**
+ * @brief Receives a signal from the server.
+ * @param signbr The signal number to be received.
+ */
+void receive_from_server(int signbr);
 
 #endif
