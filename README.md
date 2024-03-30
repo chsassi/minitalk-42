@@ -14,3 +14,6 @@ Il client e il server devono essere in grado di codificare e decodificare i mess
 
 Preview:
 ![Untitled](https://github.com/chsassi/minitalk-42/assets/146337608/98053c3f-663d-470f-8432-91af56ed1fc4)
+
+Evaluation 125/100:
+<img width="785" alt="Screenshot 2024-03-30 at 21 54 51" src="https://github.com/chsassi/minitalk-42/assets/146337608/294bbbf9-f04c-44ae-adfd-62e200f933c7">
